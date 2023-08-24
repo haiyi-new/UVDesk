@@ -9,10 +9,10 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
-      # - 443:443 #https
+      - 443:443 #https
     volumes:
       - ./:/var/www
-      - ./docker/nginx/tekno.conf:/etc/nginx/conf.d/tekno.conf
+      - ./docker/nginx/ssl.conf:/etc/nginx/conf.d/tekno.conf
       - ./docker/nginx/ssl/etc/letsencrypt/:/etc/letsencrypt/
       # - ssl_cert:/etc/letsencrypt #ssl cert
     environment:
@@ -44,5 +44,5 @@ services:
       DATABASE_URL: mysql://uvdesk:teknoniaga2023@db:3306/uvdesk
       APP_ENV: dev
       # MAILER_URL: smtp://56c1c41b5ea1ee:27f59daab398cf@sandbox.smtp.mailtrap.io:2525
-    volumes:
-      - ./:/var/www
+    # volumes:
+    #   - ./:/var/www
