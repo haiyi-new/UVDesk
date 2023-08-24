@@ -1,44 +1,25 @@
 version: "3"
+
+# this docker compose only be use to build an production image
+# do not up this docker compose, only build
+
 services:
   nginx:
-    image: nginx:alpine
-    container_name: tekno-uvdesk-nginx
-    depends_on:
-      - uvdesk
-      - db
-    restart: unless-stopped
-    ports:
-      - 80:80
-      - 443:443 #https
-    volumes:
-      - ./:/var/www
-      - ./docker/nginx/ssl.conf:/etc/nginx/conf.d/tekno.conf
-      - ./docker/nginx/ssl/etc/letsencrypt/:/etc/letsencrypt/
-      # - ssl_cert:/etc/letsencrypt #ssl cert
+    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:latest
+    build:
+      context: .
+      dockerfile: nginx.prod.Dockerfile
     environment:
       - DISABLE_IPV6=true
 
-  db:
-    image: mysql:latest
-    volumes:
-      - ./mysql:/var/lib/mysql
-    restart: always
-    environment:
-      MYSQL_DATABASE: uvdesk
-      MYSQL_ROOT_PASSWORD: teknoniaga2023
-      MYSQL_USER: uvdesk
-      MYSQL_PASSWORD: teknoniaga2023
-
   uvdesk:
-    image: tekno/uvdesk-app:dev
+    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:latest
     build:
       args:
         user: sammy
         uid: 1000
       context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - db
+      dockerfile: uvdesk.prod.Dockerfile
     tty: true
     environment:
       DATABASE_URL: mysql://uvdesk:teknoniaga2023@db:3306/uvdesk
