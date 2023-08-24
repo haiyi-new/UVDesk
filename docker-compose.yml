@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: nginx.Dockerfile
-      target: base
+      target: dev
     container_name: tekno-uvdesk-nginx
     depends_on:
       - uvdesk
