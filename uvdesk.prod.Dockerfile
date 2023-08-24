@@ -57,6 +57,9 @@ COPY . /var/www
 # Copy existing application directory permissions
 RUN chown -R $user:$user /var/www
 
+# run composer update
+RUN composer update
+
 # change user
 USER $user
 

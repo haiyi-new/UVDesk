@@ -1,0 +1,29 @@
+version: "3"
+
+# this docker compose only be use to build an production image
+# do not up this docker compose, only build
+
+services:
+  nginx:
+    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:profile
+    build:
+      context: .
+      dockerfile: nginx.profile.Dockerfile
+    environment:
+      - DISABLE_IPV6=true
+
+  uvdesk:
+    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/uvdesk/tekno:profile
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: .
+      dockerfile: uvdesk.prod.Dockerfile
+    tty: true
+    environment:
+      DATABASE_URL: mysql://uvdesk:teknoniaga2023@db:3306/uvdesk
+      APP_ENV: prod
+      # MAILER_URL: smtp://56c1c41b5ea1ee:27f59daab398cf@sandbox.smtp.mailtrap.io:2525
+    # volumes:
+    #   - ./:/var/www
