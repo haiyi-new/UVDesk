@@ -13,7 +13,7 @@ services:
       - DISABLE_IPV6=true
 
   uvdesk:
-    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:latest
+    image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/uvdesk/tekno:latest
     build:
       args:
         user: sammy
