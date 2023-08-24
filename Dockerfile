@@ -35,7 +35,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 # configure imap
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 
-RUN docker-php-ext-install -j$(nproc) gd pdo_mysql mbstring exif pcntl bcmath zip
+RUN docker-php-ext-install -j$(nproc) gd pdo_mysql mbstring exif pcntl bcmath zip imap mysqli
 
 # Configure mailparser
 RUN pecl install mailparse \
