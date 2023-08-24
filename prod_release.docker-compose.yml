@@ -6,8 +6,22 @@ version: "3"
 services:
   nginx:
     image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:latest
+    ports:
+      - "80:80"
+      - "443:443"
     environment:
       - DISABLE_IPV6=true
+
+  db:
+    image: mysql:latest
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: uvdesk
+      MYSQL_ROOT_PASSWORD: teknoniaga2023
+      MYSQL_USER: uvdesk
+      MYSQL_PASSWORD: teknoniaga2023
 
   uvdesk:
     image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/uvdesk/tekno:latest
