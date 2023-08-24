@@ -1,4 +1,4 @@
-FROM php:fpm
+FROM php:fpm as base
 
 # Arguments defined in docker-compose.yml
 ARG user
@@ -58,4 +58,21 @@ WORKDIR /var/www
 
 EXPOSE 9000
 
+
+FROM base as dev
+
+USER $user
+
+FROM base as prod
+
+# copy source code
+COPY . /var/www
+
+# Copy existing application directory permissions
+RUN chown -R $user:$user /var/www
+
+# run composer update
+RUN composer update
+
+# change user
 USER $user

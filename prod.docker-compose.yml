@@ -8,7 +8,8 @@ services:
     image: asia-southeast1-docker.pkg.dev/uvdesk-demo-393909/docker/nginx/tekno:latest
     build:
       context: .
-      dockerfile: nginx.prod.Dockerfile
+      dockerfile: nginx.Dockerfile
+      target: prod
     environment:
       - DISABLE_IPV6=true
 
@@ -19,7 +20,8 @@ services:
         user: sammy
         uid: 1000
       context: .
-      dockerfile: uvdesk.prod.Dockerfile
+      dockerfile: Dockerfile
+      target: prod
     tty: true
     environment:
       DATABASE_URL: mysql://uvdesk:teknoniaga2023@db:3306/uvdesk
