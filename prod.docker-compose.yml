@@ -42,7 +42,7 @@ services:
     tty: true
     environment:
       DATABASE_URL: mysql://uvdesk:teknoniaga2023@db:3306/uvdesk
-      APP_ENV: dev
+      APP_ENV: prod
       # MAILER_URL: smtp://56c1c41b5ea1ee:27f59daab398cf@sandbox.smtp.mailtrap.io:2525
     # volumes:
     #   - ./:/var/www
