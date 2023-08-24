@@ -1,3 +1,4 @@
+
 parameters:
     app_locales: en|fr|it|de|da|ar|es|tr|zh|pl
     
@@ -8,7 +9,7 @@ parameters:
 
     uvdesk_site_path.member_prefix: member
     uvdesk_site_path.knowledgebase_customer_prefix: customer
-
+    
     # File uploads constraints
     # @TODO: Set these parameters via compilers
     max_post_size: 8388608
@@ -16,11 +17,14 @@ parameters:
     upload_max_filesize: 2097152
 
 uvdesk:
-    site_url: 'localhost:8000'
+    site_url: 'istana.labkami.com.my'
     upload_manager:
         id: Webkul\UVDesk\CoreFrameworkBundle\FileSystem\UploadManagers\Localhost
     
-    support_email: ~
+    support_email:
+        id: support@istananegara.teknoniaga.com.my
+        name: UVDesk Community
+        mailer_id: mailer_9523
     
     # Default resources
     default:
