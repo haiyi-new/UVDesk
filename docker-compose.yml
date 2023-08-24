@@ -41,6 +41,7 @@ services:
         uid: 1000
       context: .
       dockerfile: Dockerfile
+      target: dev
     depends_on:
       - db
     tty: true
