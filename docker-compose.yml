@@ -2,6 +2,9 @@ version: "3"
 services:
   nginx:
     image: nginx:alpine
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
     container_name: tekno-uvdesk-nginx
     depends_on:
       - uvdesk
