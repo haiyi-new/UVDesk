@@ -1,4 +1,8 @@
 # Ignore files that aren't required to be in the build context when building images
-/var/log/*
-/var/cache/*
-/Dockerfile
+var/log/*
+var/cache/*
+Dockerfile
+*.Dockerfile
+docker-compose.yml
+*.docker-compose.yml
+mysql
