@@ -51,6 +51,14 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-EXPOSE 9000
+# copy source code
+COPY . /var/www
 
+# Copy existing application directory permissions
+RUN chown -R $user:$user /var/www
+
+# change user
 USER $user
+
+# expose fgi port
+EXPOSE 9000
