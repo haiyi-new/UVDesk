@@ -1,3 +1,15 @@
 swiftmailer:
-    url: '%env(MAILER_URL)%'
-    spool: { type: 'memory' }
+    default_mailer: mailer_9523
+    mailers:
+        mailer_9523:
+            transport: smtp
+            username: apikey
+            password: U0cuXzQ2MU1OeHNUYnVPY09WcFM2ellkdy4ydk5CcHRBT1plYzliSWlBOGZOOTFaWkNSNWN4QVVTeUNlcVp4dHV3T3RZ
+            host: smtp.sendgrid.net
+            port: 587
+            encryption: tls
+            auth_mode: login
+            sender_address: support@istananegara.teknoniaga.com.my
+            delivery_addresses: ['']
+            disable_delivery: false
+
