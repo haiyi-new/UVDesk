@@ -1,5 +1,7 @@
 FROM php:fpm as base
 
+ENV SITE_URL=$SITE_URL
+
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
@@ -71,8 +73,9 @@ COPY . /var/www
 # Copy existing application directory permissions
 RUN chown -R $user:$user /var/www
 
+# change user
+USER $user
+
 # run composer update
 RUN composer update
 
-# change user
-USER $user

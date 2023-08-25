@@ -16,7 +16,7 @@ parameters:
     upload_max_filesize: 2097152
 
 uvdesk:
-    site_url: "%SITE_URL%"
+    site_url: '%env(SITE_URL)%'
     upload_manager:
         id: Webkul\UVDesk\CoreFrameworkBundle\FileSystem\UploadManagers\Localhost
 
